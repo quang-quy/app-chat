@@ -1,0 +1,6 @@
+@thiendao_HostAddress = http://localhost:5052
+
+GET {{thiendao_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
