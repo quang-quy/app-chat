@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\app chat\\thiendao\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\dto\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\dto\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Account.cs",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Controllers\\Account.cs",
+              "RelativeDocumentMoniker": "thiendao\\Controllers\\Account.cs",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Controllers\\Account.cs",
+              "RelativeToolTip": "thiendao\\Controllers\\Account.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwBIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T09:29:42.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "thiendao\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "thiendao\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwDkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T06:35:01.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "thiendao\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "thiendao\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T06:34:34.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\DTO\\User.cs",
+              "RelativeDocumentMoniker": "thiendao\\DTO\\User.cs",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\DTO\\User.cs",
+              "RelativeToolTip": "thiendao\\DTO\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T06:22:45.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "thiendao\\Properties\\launchSettings.json",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Properties\\launchSettings.json",
+              "RelativeToolTip": "thiendao\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T06:17:45.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "thiendao\\appsettings.Development.json",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\appsettings.Development.json",
+              "RelativeToolTip": "thiendao\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T06:16:09.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\appsettings.json",
+              "RelativeDocumentMoniker": "thiendao\\appsettings.json",
+              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\appsettings.json",
+              "RelativeToolTip": "thiendao\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T06:16:05.105Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
