@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using thiendao.Model;
 
 [ApiController]
@@ -12,6 +17,15 @@ public class AuthController : ControllerBase
     {
         _config = config;
     }
+
+    [Authorize]
+    [HttpGet("profile")]
+    public IActionResult GetProfile()
+    {
+        var userName = User.Identity.Name;
+        return Ok(new { userName });
+    }
+
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] User request)
@@ -28,6 +42,11 @@ public class AuthController : ControllerBase
         if (reader.Read())
         {
             var displayName = reader["DisplayName"].ToString();
+            // thêm jwt
+
+          
+
+            //
             return Ok(new { message = "Login thành công", displayName });
         }
 
