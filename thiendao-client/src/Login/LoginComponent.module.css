@@ -1,0 +1,15 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Toàn màn hình */
+  background: linear-gradient(to right, #f0f2f5, #ffffff);
+}
+
+.loginBox {
+  width: 360px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
