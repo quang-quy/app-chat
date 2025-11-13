@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form, Input, Space, message,Alert } from 'antd';
 import {CreateAccountAPI}  from '../API/ManageApi'
 import { useState } from "react";
+import {useNavigate } from "react-router-dom";
 
 const layout = {
   labelCol: { span: 8 },
@@ -19,11 +20,11 @@ const validateMessages = {
   },
 };
 
-
                
 
 
-export default function CreateAccount() {
+ function CreateAccount() {
+  const navigate = useNavigate();
 
   const [alertType, setAlertType] = useState(null);
 const [fadeOut, setFadeOut] = useState(false);
@@ -37,7 +38,7 @@ const onFinish = async (values)=> {
     setFadeOut(false);
     setTimeout(() => setFadeOut(true), 1000); // bắt đầu fade sau 1s
     setTimeout(() => setAlertType(null), 1500);
-    console.log('Response:', response.data);
+    navigate("/");
   }
   catch (error) {
 message.error('Tạo tài khoản thất bại!');
@@ -109,3 +110,4 @@ setAlertType('error');
 
     </div>)
 }
+export default CreateAccount;

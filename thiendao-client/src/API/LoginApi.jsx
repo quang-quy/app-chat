@@ -5,16 +5,30 @@ const BASE_URL = 'https://localhost:7008/api/Auth';
 export const LoginAPI  = async (data) => {
     return axios.post(`${BASE_URL}/login`, data);
 }
- 
-export const   api = axios.create({
-  baseURL: '/api'
-});
 
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+export const GetDataUser = async () => {
+  const token = localStorage.getItem("token");
+
+  return axios.get(`${BASE_URL}/profile`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+
+
+
+export const LogoutAPI = async () => {
+  const token = localStorage.getItem("token");
+
+  return axios.post(`${BASE_URL}/logout`, null, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+ 
+
  

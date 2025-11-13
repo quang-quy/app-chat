@@ -13,6 +13,7 @@ function LoginComponent() {
   const onFinish = async (values) => {
     try {
       const response = await LoginAPI(values);
+      localStorage.setItem("token", response.data.token);
       message.success("Đăng nhập thành công");
 
       setAlertType("success");
@@ -22,7 +23,7 @@ function LoginComponent() {
 
       console.log("Response:", response.data);
 
-      // Điều hướng sau khi login
+
       setTimeout(() => navigate("/Home"), 800);
     } catch (error) {
       console.error("Error:", error);
