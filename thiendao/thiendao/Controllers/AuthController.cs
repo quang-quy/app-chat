@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
+using thiendao.DTO;
 using thiendao.Model;
 
 [ApiController]
@@ -12,24 +15,96 @@ using thiendao.Model;
 public class AuthController : ControllerBase
 {
     private readonly IConfiguration _config;
+      private readonly IConfiguration _configuration;
 
     public AuthController(IConfiguration config)
     {
         _config = config;
     }
 
-    [Authorize]
-    [HttpGet("profile")]
-    public IActionResult GetProfile()
+    public string GenerateJwtToken(string username)
     {
-        var userName = User.Identity.Name;
-        return Ok(new { userName });
+        var jwtSettings = _config.GetSection("Jwt").Get<JWT>();
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        
+        var token = new JwtSecurityToken(
+            issuer: jwtSettings.Issuer,
+            audience: jwtSettings.Audience,
+            claims: new[] { new Claim(ClaimTypes.Name, username) },
+            expires: DateTime.Now.AddMinutes(jwtSettings.ExperiMinutes),
+            signingCredentials: creds
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+  
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        
+         try
+        {
+            var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+            var connStr = _config.GetConnectionString("ChatDb");
+            using var conn = new SqlConnection(connStr);
+            await conn.OpenAsync();
+            if (string.IsNullOrEmpty(userName))
+            {
+                return Unauthorized(new { message = "Không xác định được người dùng" });
+            }
+
+
+            var cmd = new SqlCommand("UPDATE RefreshTokens SET IsRevoked = 1 WHERE UserName = @u", conn);
+            cmd.Parameters.AddWithValue("@u", userName);
+             cmd.ExecuteNonQuery();
+
+        return Ok(new { message = "Đăng xuất thành công" });
+        }
+
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "có lỗi xảy ra khi đăng xuất", error = ex.Message });
+        }
     }
 
 
+
+
+
+    [HttpGet("profile")]
+    public async Task<IActionResult> GetProfile()
+    {
+        try
+        {
+            var userName = User.Identity.Name;
+            var connect = _config.GetConnectionString("ChatDb");
+            using var conn = new SqlConnection(connect);
+            await conn.OpenAsync();
+
+            var cmd = new SqlCommand("SELECT DisplayName FROM Users WHERE UserName = @u", conn);
+            cmd.Parameters.AddWithValue("@u", userName);
+            var result = await cmd.ExecuteScalarAsync();
+            if (result == null)
+                return NotFound(new { message = "Không tìm thấy người dùng" });
+
+            return Ok(new { name = result.ToString() });
+
+        }
+        catch(Exception ex)
+        {
+            return StatusCode(500, new {message = "lấy thông tin người dùng thất bại"  });
+        }
+    }
+
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] User request)
     {
+         try
+        {
+
+     
         var connStr = _config.GetConnectionString("ChatDb");
         using var conn = new SqlConnection(connStr);
         await conn.OpenAsync();
@@ -42,15 +117,18 @@ public class AuthController : ControllerBase
         if (reader.Read())
         {
             var displayName = reader["DisplayName"].ToString();
-            // thêm jwt
+           // tạo jwt token
+           var token = GenerateJwtToken(request.UserName);
 
-          
-
-            //
-            return Ok(new { message = "Login thành công", displayName });
+            return Ok(new { message = "Login thành công", displayName, token });
         }
 
         return Unauthorized(new { message = "Sai tài khoản hoặc mật khẩu" });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { mesage = "Đã xảy ra lỗi trong quá trình đăng nhập" });
+        }
     }
 
     [HttpPost("register")]

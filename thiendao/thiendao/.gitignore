@@ -15,3 +15,4 @@ wwwroot/
 # Others
 *.DS_Store
 *.tmp
+git rm -r --cached .vs/
