@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LoginAPI } from "../API/LoginApi";
 import styles from "./LoginComponent.module.css";
+import { useEffect } from "react";
 
 function LoginComponent() {
   const [alertType, setAlertType] = useState(null);
@@ -33,8 +34,16 @@ function LoginComponent() {
       setFadeOut(false);
       setTimeout(() => setFadeOut(true), 1000);
       setTimeout(() => setAlertType(null), 1500);
+      setTimeout(() => navigate("/Home", { replace: true }), 800);
     }
   };
+
+  useEffect(() => {
+  if (localStorage.getItem("token")) {
+    navigate("/Home", { replace: true });
+  }
+}, []);
+
 
   return (
     <div className={styles.loginContainer}>
