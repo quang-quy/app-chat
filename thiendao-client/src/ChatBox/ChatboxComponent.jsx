@@ -1,6 +1,7 @@
 import { Button, Col, Row } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useState, useEffect } from "react";
+import {SendOutlined}  from '@ant-design/icons';
 
 // import { HubConnectionBuilder } from "@microsoft/signalr";
 
@@ -39,32 +40,32 @@ const ChatBox = () => {
   };
 
    return (
-    <Row justify="center" align="middle" style={{ minHeight: "100vh", background: "#f5f5f5" }}>
-      <Col xs={22} sm={18} md={12} lg={10} xl={8}>
-        <div style={{ 
-          display: "flex", 
-          flexDirection: "column", 
-          height: "80vh", 
-          background: "#fff", 
-          borderRadius: 8, 
-          boxShadow: "0 2px 8px rgba(0,0,0,0.1)", 
-          padding: 16 
-        }}>
-          {/* Khung chat */}
-          <div style={{ flex: 1, overflowY: "auto", marginBottom: 12, border: "1px solid #eee", padding: 10 }}>
-            {/* Tin nhắn sẽ render ở đây */}
-            <div><strong>admin:</strong> Hello!</div>
-            <div><strong>bạn:</strong> Hi!</div>
-          </div>
+ <Row justify="center" align="middle" style={{ background: "#f5f5f5", width:"100%" }}>
+<div style={{ width: '100%', backgroundColor:'rgb(223, 230, 233)' }}>
+  {/* Nhập tin nhắn */}
+ <TextArea
+  rows={3}
+  placeholder="Nhập tin nhắn..."
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  onPressEnter={(e) => {
+    e.preventDefault();   // tránh xuống dòng
+    sendMessage();        // gọi hàm gửi tin nhắn
+      console.log("Enter pressed! Tin nhắn hiện tại:", message);
+  }}
+/>
 
-          {/* Nhập tin nhắn */}
-          <TextArea rows={3} placeholder="Nhập tin nhắn..." />
-          <Button type="primary" block style={{ marginTop: 8 }}>
-            Gửi tin nhắn
-          </Button>
-        </div>
-      </Col>
-    </Row>
+  
+  {/* Button nằm dưới, bên phải */}
+  <div style={{ textAlign: 'right', marginTop: 8 }}>
+    <Button type="primary" style={{ minWidth: 100, padding: '0 24px' }}>
+      <SendOutlined />
+    </Button>
+  </div>
+</div>
+
+</Row>
+
   );
 };
 

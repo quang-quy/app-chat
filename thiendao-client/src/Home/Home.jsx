@@ -7,24 +7,27 @@ import {
   LogoutOutlined,
   MessageOutlined,
   UsergroupAddOutlined,
-  SmileOutlined
+  SmileOutlined,
+  UploadOutlined
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme, Space, Avatar, Dropdown, message, Card } from 'antd';
+import { Button, Layout, Menu, theme, Avatar, Dropdown, message, Card } from 'antd';
 import { LogoutAPI, GetDataUser } from '../API/LoginApi';
 import { useNavigate } from "react-router-dom";
+import Chatbox from '../ChatBox/ChatboxComponent'
+
 
 const { Header, Sider, Content } = Layout;
 
 const App = ({ currentUserId }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [userName, setUserName] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]); 
   const [connection, setConnection] = useState(null);
 
   const navigate = useNavigate();
   const { token: { borderRadiusLG } } = theme.useToken();
 
-  // Lấy thông tin user
+  
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -49,31 +52,26 @@ const App = ({ currentUserId }) => {
       .withAutomaticReconnect()
       .build();
 
-    // Lắng nghe thay đổi trạng thái online/offline
+    // Lắng nghe cập nhật trạng thái từng user
     conn.on("UserStatusChanged", (userId, status) => {
-      setOnlineUsers(prev => {
-        const updated = [...prev];
-        const index = updated.findIndex(u => u.userId === userId);
-        if (status === "Online" && index === -1) {
-          updated.push({ userId, displayName: userId }); // tạm thời userId là tên hiển thị, backend nên trả displayName
-        } else if (status === "Offline" && index !== -1) {
-          updated.splice(index, 1);
-        }
-        return updated;
-      });
+      setAllUsers(prev => prev.map(u => 
+        u.userId === userId ? { ...u, status } : u
+      ));
     });
 
-
-    // Nhận danh sách online ban đầu
-    conn.on("OnlineUsersList", (users) => {
-      setOnlineUsers(users);
+    // Nhận danh sách tất cả user cùng trạng thái từ backend
+    conn.on("AllUsersWithStatus", (users) => {
+      setAllUsers(users);
     });
+    conn.on("AllUsersWithStatus", (users) => {
+    setAllUsers(users); 
+});
 
     conn.start()
       .then(() => {
         console.log("Connected to SignalR hub");
         if (conn.state === signalR.HubConnectionState.Connected) {
-          conn.invoke("GetOnlineUsers").catch(err => console.error(err));
+          conn.invoke("GetAllUsersWithStatus").catch(err => console.error(err));
         }
       })
       .catch(err => console.error("SignalR connection error:", err));
@@ -102,6 +100,10 @@ const App = ({ currentUserId }) => {
     <Menu>
       <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
         Đăng xuất
+      </Menu.Item>
+
+       <Menu.Item key="logout" icon={<UploadOutlined />} onClick={handleLogout}>
+        Tải ảnh đại diện
       </Menu.Item>
     </Menu>
   );
@@ -141,36 +143,52 @@ const App = ({ currentUserId }) => {
         <Content
           style={{
             margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            backgroundColor: '#dfe6e9',
-            borderRadius: borderRadiusLG,
-            display: 'flex',
-            justifyContent: 'flex-end'
+    padding: 24,
+    minHeight: 280,
+    backgroundColor: '#dfe6e9',
+    borderRadius: borderRadiusLG,
+    display: 'flex',
+    gap: 16,         // khoảng cách giữa Chatbox và Card
+    minHeight: '80vh',
+   
+    
           }}
         >
+         <div style={{   flex: 1, 
+  display: 'flex',          // ← bắt buộc
+  flexDirection: 'column', 
+  justifyContent: 'flex-end'   }}>
+    <Chatbox />
+  </div>
           <Card style={{ width: 300 }}>
             <p>Trạng thái hoạt động</p>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {onlineUsers.map(user => (
-                <li key={user.userId} style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: 10,
-                      height: 10,
-                      borderRadius: '50%',
-                      backgroundColor: 'green', // xanh = online
-                      marginRight: 8,
-                    }}
-                  />
-                  {user.displayName} {user.userId === currentUserId ? "(Bạn)" : ""}
-                </li>
-              ))}
-            </ul>
-            <p>Bạn bè như cái bẹn bà</p>
-            <p>Hoạn nạn gọi bạn toàn thuê bao</p>
+{allUsers
+  .filter(user => String(user.userId) !== String(currentUserId))
+  .map(user => (
+    <li key={user.userId} style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
+      <span
+        style={{
+          display: 'inline-block',
+          width: 10,
+          height: 10,
+          borderRadius: '50%',
+          backgroundColor: user.status === 'Online' ? 'green' : 'red',
+          marginRight: 8,
+        }}
+      />
+      {user.displayName}
+    </li>
+
+    
+  ))
+}
+
+
+
+            
           </Card>
+
+          
         </Content>
       </Layout>
     </Layout>
