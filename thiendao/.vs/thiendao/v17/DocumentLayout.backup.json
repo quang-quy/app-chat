@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\app chat\\thiendao\\",
+  "WorkspaceRootPath": "D:\\app-chat\\thiendao\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\hubs\\chathubs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\hubs\\chathubs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\hubs\\chathubs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|e:\\app chat\\thiendao\\thiendao\\dto\\jwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\dto\\jwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|d:\\app-chat\\thiendao\\thiendao\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FF7BE448-0382-45FD-9D8D-187718AFDC92}|thiendao\\thiendao.csproj|solutionrelative:thiendao\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,79 +42,93 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ChatHubs.cs",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Hubs\\ChatHubs.cs",
-              "RelativeDocumentMoniker": "thiendao\\Hubs\\ChatHubs.cs",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Hubs\\ChatHubs.cs",
-              "RelativeToolTip": "thiendao\\Hubs\\ChatHubs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T02:31:37.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "JWT.cs",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\DTO\\JWT.cs",
-              "RelativeDocumentMoniker": "thiendao\\DTO\\JWT.cs",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\DTO\\JWT.cs",
-              "RelativeToolTip": "thiendao\\DTO\\JWT.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T02:00:14.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Program.cs",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\Program.cs",
               "RelativeDocumentMoniker": "thiendao\\Program.cs",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Program.cs",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\Program.cs",
               "RelativeToolTip": "thiendao\\Program.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAACYAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswDYAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T01:40:41.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "thiendao\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "thiendao\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:54:28.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ChatHubs.cs",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\Hubs\\ChatHubs.cs",
+              "RelativeDocumentMoniker": "thiendao\\Hubs\\ChatHubs.cs",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\Hubs\\ChatHubs.cs",
+              "RelativeToolTip": "thiendao\\Hubs\\ChatHubs.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAnwJEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T02:31:37.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Account.cs",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Controllers\\Account.cs",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\Controllers\\Account.cs",
               "RelativeDocumentMoniker": "thiendao\\Controllers\\Account.cs",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Controllers\\Account.cs",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\Controllers\\Account.cs",
               "RelativeToolTip": "thiendao\\Controllers\\Account.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T09:29:42.064Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\appsettings.json",
+              "RelativeDocumentMoniker": "thiendao\\appsettings.json",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\appsettings.json",
+              "RelativeToolTip": "thiendao\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAACEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T06:16:05.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "thiendao\\Controllers\\AuthController.cs",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\Controllers\\AuthController.cs",
               "RelativeToolTip": "thiendao\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEQAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAEwB8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T06:35:01.704Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\Properties\\launchSettings.json",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "thiendao\\Properties\\launchSettings.json",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\Properties\\launchSettings.json",
               "RelativeToolTip": "thiendao\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -125,26 +139,13 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "appsettings.Development.json",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\appsettings.Development.json",
+              "DocumentMoniker": "D:\\app-chat\\thiendao\\thiendao\\appsettings.Development.json",
               "RelativeDocumentMoniker": "thiendao\\appsettings.Development.json",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\appsettings.Development.json",
+              "ToolTip": "D:\\app-chat\\thiendao\\thiendao\\appsettings.Development.json",
               "RelativeToolTip": "thiendao\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-11-11T06:16:09.667Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\app chat\\thiendao\\thiendao\\appsettings.json",
-              "RelativeDocumentMoniker": "thiendao\\appsettings.json",
-              "ToolTip": "E:\\app chat\\thiendao\\thiendao\\appsettings.json",
-              "RelativeToolTip": "thiendao\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-11T06:16:05.105Z",
               "EditorCaption": ""
             }
           ]

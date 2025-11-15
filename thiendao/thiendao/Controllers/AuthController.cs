@@ -22,23 +22,31 @@ public class AuthController : ControllerBase
         _config = config;
     }
 
-    public string GenerateJwtToken(string username)
+    public string GenerateJwtToken(int userId, string username)
     {
         var jwtSettings = _config.GetSection("Jwt").Get<JWT>();
+
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        
+
+        var claims = new[]
+        {
+        new Claim(ClaimTypes.NameIdentifier, userId.ToString()),   // 👈 Quan trọng cho SignalR
+        new Claim(ClaimTypes.Name, username)
+    };
+
         var token = new JwtSecurityToken(
             issuer: jwtSettings.Issuer,
             audience: jwtSettings.Audience,
-            claims: new[] { new Claim(ClaimTypes.Name, username) },
+            claims: claims,                                            // 👈 đúng thuộc tính
             expires: DateTime.Now.AddMinutes(jwtSettings.ExperiMinutes),
             signingCredentials: creds
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
-  
+
+
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {
@@ -101,35 +109,55 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] User request)
     {
-         try
+        try
         {
+            var connStr = _config.GetConnectionString("ChatDb");
+            using var conn = new SqlConnection(connStr);
+            await conn.OpenAsync();
 
-     
-        var connStr = _config.GetConnectionString("ChatDb");
-        using var conn = new SqlConnection(connStr);
-        await conn.OpenAsync();
+            // Dùng parameter để tránh SQL Injection
+            var cmd = new SqlCommand(
+                "SELECT Id, UserName, DisplayName, Password FROM Users WHERE UserName = @u",
+                conn
+            );
+            cmd.Parameters.AddWithValue("@u", request.UserName);
 
-        var cmd = new SqlCommand("SELECT * FROM Users WHERE UserName = @u AND Password = @p", conn);
-        cmd.Parameters.AddWithValue("@u", request.UserName);
-        cmd.Parameters.AddWithValue("@p", request.Password); 
+            using var reader = await cmd.ExecuteReaderAsync();
+            if (reader.Read())
+            {
+                var userId = Convert.ToInt32(reader["Id"]);
+                var username = reader["UserName"].ToString()!;
+                var displayName = reader["DisplayName"].ToString()!;
+                var passwordHash = reader["Password"].ToString()!;
 
-        using var reader = await cmd.ExecuteReaderAsync();
-        if (reader.Read())
-        {
-            var displayName = reader["DisplayName"].ToString();
-           // tạo jwt token
-           var token = GenerateJwtToken(request.UserName);
+             
+                if (passwordHash != request.Password)
+                {
+                    return Unauthorized(new { message = "Sai tài khoản hoặc mật khẩu" });
+                }
 
-            return Ok(new { message = "Login thành công", displayName, token });
-        }
+              
+                var token = GenerateJwtToken(userId, username);
 
-        return Unauthorized(new { message = "Sai tài khoản hoặc mật khẩu" });
+                return Ok(new
+                {
+                    message = "Login thành công",
+                    userId,
+                    username,
+                    displayName,
+                    token
+                });
+            }
+
+            return Unauthorized(new { message = "Sai tài khoản hoặc mật khẩu" });
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { mesage = "Đã xảy ra lỗi trong quá trình đăng nhập" });
+            // Log nếu cần: ex.Message
+            return StatusCode(500, new { message = "Đã xảy ra lỗi trong quá trình đăng nhập" });
         }
     }
+
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] User request)
