@@ -90,20 +90,28 @@ public class AuthController : ControllerBase
             using var conn = new SqlConnection(connect);
             await conn.OpenAsync();
 
-            var cmd = new SqlCommand("SELECT DisplayName FROM Users WHERE UserName = @u", conn);
+            var cmd = new SqlCommand("SELECT DisplayName, Avt FROM Users WHERE UserName = @u", conn);
             cmd.Parameters.AddWithValue("@u", userName);
-            var result = await cmd.ExecuteScalarAsync();
-            if (result == null)
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                var displayName = reader["DisplayName"].ToString();
+                var avt = reader["Avt"].ToString();
+
+                return Ok(new { displayName, avt });
+            }
+            else
+            {
                 return NotFound(new { message = "Không tìm thấy người dùng" });
-
-            return Ok(new { name = result.ToString() });
-
+            }
         }
-        catch(Exception ex)
+        catch (Exception)
         {
-            return StatusCode(500, new {message = "lấy thông tin người dùng thất bại"  });
+            return StatusCode(500, new { message = "Lấy thông tin người dùng thất bại" });
         }
     }
+
 
     [AllowAnonymous]
     [HttpPost("login")]

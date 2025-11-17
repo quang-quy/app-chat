@@ -11,5 +11,6 @@ namespace thiendao.Model
         public string? Password { get; set; }
         public string? Email { get; set; }
         public string? Introduce { get; set; }
+        public string? Avt { get; set; }
     }
 }

@@ -122,10 +122,44 @@ public class ChatHub : Hub
         await base.OnDisconnectedAsync(exception);
     }
 
-    public Task SendMessage(string user, string message)
+    public Task SendMessageGroup(string user, string message)
     {
         return Clients.All.SendAsync("ReceiveMessage", user, message);
     }
+
+    public async Task SendMessage(string userId, string message)
+    {
+        try
+        {
+            var fromUserId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var fromUserName = Context.User?.Identity?.Name;
+
+            string connStr = _configuration.GetConnectionString("ChatDb");
+            using var conn = new SqlConnection(connStr);
+            await conn.OpenAsync();
+
+            string sql = @"INSERT INTO Messages (FromUserId, ToUserId, NoiDung, Timestamp)
+                       VALUES (@from, @to, @NoiDung, @time)";
+
+            using var cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@from", fromUserId);
+            cmd.Parameters.AddWithValue("@to", userId);
+            cmd.Parameters.AddWithValue("@NoiDung", message);
+            cmd.Parameters.AddWithValue("@time", DateTime.UtcNow);
+
+            await cmd.ExecuteNonQueryAsync();
+
+            await Clients.User(userId).SendAsync("ReceiveMessage", fromUserId, fromUserName, message);
+        }
+        catch (Exception ex)
+        {
+          
+            Console.Error.WriteLine($"Lỗi khi gửi tin nhắn: {ex.Message}");
+       
+            throw;
+        }
+    }
+
 
     public Task GetOnlineUsers()
     {
