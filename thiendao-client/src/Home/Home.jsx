@@ -28,6 +28,8 @@ const App = ({ currentUserId }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageText, setMessageText] = useState("");
   const [messages, setMessages] = useState([]);
+  const [unreadMessages, setUnreadMessages] = useState({});
+
 
   const navigate = useNavigate();
   const { token: { borderRadiusLG } } = theme.useToken();
@@ -39,6 +41,10 @@ useEffect(() => {
   connection.on("ReceiveMessage", (fromUserId, fromUserName, message) => {
 
     setMessages(prev => [...prev, { fromUserId, fromUserName, message }]);
+    setUnreadMessages(prev => ({
+    ...prev,
+    [fromUserId]: (prev[fromUserId] || 0) + 1
+  }));
   });
 
   return () => {
@@ -225,26 +231,42 @@ const uploadAvatar = async (e) => {
   </div>
           <Card style={{ width: 300 }}>
             <p>Trạng thái hoạt động</p>
-{allUsers
-  .filter(user => String(user.userId) !== String(currentUserId))
-  .map(user => (
-    <li key={user.userId} style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }} onClick={()=>setSelectedUser(user)}>
-      <span
-        style={{
-          display: 'inline-block',
-          width: 10,
-          height: 10,
-          borderRadius: '50%',
-          backgroundColor: user.status === 'Online' ? 'green' : 'red',
-          marginRight: 8,
-        }}
-      />
-      {user.displayName}
-    </li>
+{allUsers.map(user => (
+  <li
+    key={user.userId}
+    style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}
+    onClick={() => {
+      setSelectedUser(user);
+      // reset số tin nhắn chưa đọc khi mở chat
+      setUnreadMessages(prev => ({ ...prev, [user.userId]: 0 }));
+    }}
+  >
+    <span
+      style={{
+        display: 'inline-block',
+        width: 10,
+        height: 10,
+        borderRadius: '50%',
+        backgroundColor: user.status === 'Online' ? 'green' : 'red',
+        marginRight: 8,
+      }}
+    />
+    {user.displayName}
+    {unreadMessages[user.userId] > 0 && (
+      <span style={{
+        marginLeft: 'auto',
+        backgroundColor: 'red',
+        color: 'white',
+        borderRadius: '50%',
+        padding: '2px 6px',
+        fontSize: 12
+      }}>
+        {unreadMessages[user.userId]}
+      </span>
+    )}
+  </li>
+))}
 
-    
-  ))
-}
 </Card>
 {selectedUser && (
   <Card style={{ marginTop: 16, width: 400 }}>
