@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "antd";
+import { Button, Row } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useState, useEffect } from "react";
 import {SendOutlined}  from '@ant-design/icons';
@@ -33,7 +33,7 @@ const ChatBox = () => {
 
   const sendMessage = async () => {
     if (connection && message.trim()) {
-      const user = localStorage.getItem("username"); // hoặc lấy từ token
+      const user = localStorage.getItem("username");
       await connection.invoke("SendMessage", user, message);
       setMessage("");
     }
@@ -42,18 +42,24 @@ const ChatBox = () => {
    return (
  <Row justify="center" align="middle" style={{ background: "#f5f5f5", width:"100%" }}>
 <div style={{ width: '100%', backgroundColor:'rgb(223, 230, 233)' }}>
-  {/* Nhập tin nhắn */}
- <TextArea
-  rows={3}
+
+<TextArea
+  rows={4}
   placeholder="Nhập tin nhắn..."
   value={message}
   onChange={(e) => setMessage(e.target.value)}
   onPressEnter={(e) => {
+    if (e.shiftKey) {
+      // Shift+Enter → xuống dòng
+      return;
+    }
+    // Enter → gửi tin nhắn
     e.preventDefault();   // tránh xuống dòng
-    sendMessage();        // gọi hàm gửi tin nhắn
-      console.log("Enter pressed! Tin nhắn hiện tại:", message);
+    sendMessage();        // hàm này đã có setMessage("") bên trong
+    console.log("Enter pressed! Tin nhắn hiện tại:", message);
   }}
 />
+
 
   
   {/* Button nằm dưới, bên phải */}

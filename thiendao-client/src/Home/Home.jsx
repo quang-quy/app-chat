@@ -14,6 +14,7 @@ import { Button, Layout, Menu, theme, Avatar, Dropdown, message, Card } from 'an
 import { LogoutAPI, GetDataUser } from '../API/LoginApi';
 import { useNavigate } from "react-router-dom";
 import Chatbox from '../ChatBox/ChatboxComponent'
+import {UploadAvatar}   from '../API/UserApi';
 
 
 const { Header, Sider, Content } = Layout;
@@ -23,16 +24,38 @@ const App = ({ currentUserId }) => {
   const [userName, setUserName] = useState("");
   const [allUsers, setAllUsers] = useState([]); 
   const [connection, setConnection] = useState(null);
+  const [avatar, setAvatar] = useState("");
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [messageText, setMessageText] = useState("");
+  const [messages, setMessages] = useState([]);
 
   const navigate = useNavigate();
   const { token: { borderRadiusLG } } = theme.useToken();
 
   
+useEffect(() => {
+  if (!connection) return;
+
+  connection.on("ReceiveMessage", (fromUserId, fromUserName, message) => {
+
+    setMessages(prev => [...prev, { fromUserId, fromUserName, message }]);
+  });
+
+  return () => {
+    connection.off("ReceiveMessage");
+  };
+}, [connection]);
+
+
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const res = await GetDataUser();
-        setUserName(res.data.name);
+        setUserName(res.data.displayName);
+                setUserName(res.data.displayName);
+                setAvatar(res.data.avt); 
+        console.log("User data fetched:", res.data); 
       } catch (err) {
         console.error("Lỗi lấy dữ liệu người dùng:", err);
       }
@@ -82,6 +105,19 @@ const App = ({ currentUserId }) => {
       conn.stop().catch(err => console.error(err));
     };
   }, []);
+  //Send Message
+
+const SendMessage = async () => {
+  if (!connection || !selectedUser || !messageText.trim()) return;
+  try {
+
+    await connection.invoke("SendMessage", selectedUser.userId.toString(), messageText);
+    setMessageText(""); 
+  } catch (err) {
+    console.error("Send message error:", err);
+  }
+};
+
 
   // Logout
   const handleLogout = async () => {
@@ -96,17 +132,44 @@ const App = ({ currentUserId }) => {
     }
   };
 
-  const avatarMenu = (
-    <Menu>
-      <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
-        Đăng xuất
-      </Menu.Item>
+const uploadAvatar = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-       <Menu.Item key="logout" icon={<UploadOutlined />} onClick={handleLogout}>
+  try {
+    const formData = new FormData();
+    formData.append("file", file); // key phải là "file"
+
+    const res = await UploadAvatar(formData); // truyền formData vào API
+    message.success("Tải ảnh đại diện thành công");
+    console.log("Avatar URL:", res.data.avatarUrl);
+     setAvatar(`${res.data.avatarUrl}?t=${Date.now()}`);
+  } catch (err) {
+    message.error("Tải ảnh đại diện thất bại");
+    console.error(err);
+  }
+};
+
+  const avatarMenu = (
+  <Menu>
+    <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
+      Đăng xuất
+    </Menu.Item>
+
+    <Menu.Item key="upload" icon={<UploadOutlined />}>
+      <label style={{ cursor: "pointer" }}>
         Tải ảnh đại diện
-      </Menu.Item>
-    </Menu>
-  );
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={uploadAvatar}
+        />
+      </label>
+    </Menu.Item>
+  </Menu>
+);
+
 
   return (
     <Layout style={{ height: "100vh" }}>
@@ -135,7 +198,7 @@ const App = ({ currentUserId }) => {
           <div style={{ display: 'flex', alignItems: 'center', marginRight: 20 }}>
             <div style={{ marginRight: 10 }}>{userName}</div>
             <Dropdown overlay={avatarMenu} placement="bottomRight" trigger={['click']}>
-              <Avatar size={50} style={{ backgroundColor: '#87d068', cursor: 'pointer' }} icon={<UserOutlined />} />
+              <Avatar size={50} style={{cursor: 'pointer' }} icon={<UserOutlined />} src= {avatar} />
             </Dropdown>
           </div>
         </Header>
@@ -165,7 +228,7 @@ const App = ({ currentUserId }) => {
 {allUsers
   .filter(user => String(user.userId) !== String(currentUserId))
   .map(user => (
-    <li key={user.userId} style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
+    <li key={user.userId} style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }} onClick={()=>setSelectedUser(user)}>
       <span
         style={{
           display: 'inline-block',
@@ -182,11 +245,31 @@ const App = ({ currentUserId }) => {
     
   ))
 }
+</Card>
+{selectedUser && (
+  <Card style={{ marginTop: 16, width: 400 }}>
+    <h3>Chat với {selectedUser.displayName}</h3>
+    <div style={{ minHeight: 200, border: "1px solid #ccc", marginBottom: 8, padding: 8 }}>
+      {messages.map((msg, idx) => (
+        <div key={idx}>
+          <b>{msg.fromUserName}:</b> {msg.message}
+        </div>
+      ))}
+    </div>
+    <input
+      type="text"
+      value={messageText}
+      onChange={e => setMessageText(e.target.value)}
+      onKeyDown={e => e.key === "Enter" && SendMessage()}
+      placeholder="Nhập tin nhắn..."
+      style={{ width: "100%", padding: 8 }}
+    />
+    <Button type="primary" onClick={SendMessage} style={{ marginTop: 8 }}>
+      Gửi
+    </Button>
+  </Card>
+)}
 
-
-
-            
-          </Card>
 
           
         </Content>
